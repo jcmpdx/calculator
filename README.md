@@ -1,4 +1,4 @@
 # calculator
 Calculator made in HTML, CSS, and JS
 
-![Calculator mockup](https://github.com/jcmpdx/calculator/blob/main/calculator_mock.PNG "calculator")
+<img src="[http://url/image.pn](https://github.com/jcmpdx/calculator/blob/main/calculator_mock.PNG)g" height="200px" width="auto" >

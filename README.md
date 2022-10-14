@@ -1,3 +1,3 @@
 # calculator
 Calculator made in HTML, CSS, and JS
-![Calculator mockup](/repository/assets/employee.png?raw=true "calculator")
+![Calculator mockup](https://github.com/jcmpdx/calculator/blob/main/calculator_mock.PNG "calculator")

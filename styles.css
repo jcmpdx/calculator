@@ -1,3 +1,57 @@
 body {
-    
+    display: flex;
+    justify-content: center; 
+}
+.calcbody {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 300px;
+    border: 10px solid green;
+    background-color: rgb(94, 94, 94);
+}
+.screen {
+    display: flex;
+    justify-content: space-between;
+    width: 246px;
+    height: 100px;
+    background-color: rgb(254, 255, 217);
+    border: solid 1px black;
+}
+.log {
+    width: 70px;
+    margin-left: 10px;
+}
+.inputdisplay {
+    width: 150px;
+    margin-right: 10px;
+    padding-top: 30px;
+    text-align: right;
+    font-size: 32px;
+    font-weight: 600;
+}
+.squarebutton {
+    width: 60px;
+    height: 40px;
+    border: solid 1px black;
+    border-radius: 10%;
+    text-align: center;
+    padding-top: 20px;
+}
+#zero {
+    width: 120px;
+    height: 40px;
+    border: solid 1px black;
+    border-radius: 10%;
+    text-align: center;
+    padding-top: 20px;
+}
+.buttongroup1 {
+    background-color: rgb(101, 180, 107);
+}
+.buttongroup2 {
+    background-color: rgb(142, 103, 214);
+}
+.buttongroup3 {
+    background-color: rgb(192, 164, 81);
 }

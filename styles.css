@@ -8,7 +8,11 @@ body {
     flex-wrap: wrap;
     width: 300px;
     border: 10px solid green;
+    border-radius: 10px;
     background-color: rgb(94, 94, 94);
+    font-size: 20px;
+    margin-top: 20px;
+    padding: 10px 0 20px 0;
 }
 .screen {
     display: flex;
@@ -34,23 +38,23 @@ body {
     width: 60px;
     height: 40px;
     border: solid 1px black;
-    border-radius: 10%;
+    border-radius: 5%;
     text-align: center;
     padding-top: 20px;
 }
 #zero {
-    width: 120px;
+    width: 122px;
     height: 40px;
-    border: solid 1px black;
-    border-radius: 10%;
-    text-align: center;
+    /* border: solid 1px black; */
+    /* border-radius: 5%; */
+    /* text-align: center; */
     padding-top: 20px;
 }
 .buttongroup1 {
     background-color: rgb(101, 180, 107);
 }
 .buttongroup2 {
-    background-color: rgb(142, 103, 214);
+    background-color: rgb(177, 157, 212);
 }
 .buttongroup3 {
     background-color: rgb(192, 164, 81);

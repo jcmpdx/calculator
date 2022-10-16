@@ -11,27 +11,29 @@
     <div class="calcbody">
         <div class="screen">
             <div class="log">...</div>
-            <div class="inputdisplay">0</div>
+            <div class="inputdisplay" id="display">0</div>
         </div>
-        <div class="buttongroup1 squarebutton" id="ac" data-key="46">AC</div>
-        <div class="buttongroup1 squarebutton" id="plusminus">+/-</div>
-        <div class="buttongroup1 squarebutton" id="percent">%</div>
-        <div class="buttongroup2 squarebutton" id="divide" data-key="111">÷</div> <!-- &#247; -->
-        <div class="buttongroup3 squarebutton" id="seven" data-key="103">7</div>
-        <div class="buttongroup3 squarebutton" id="eight" data-key="104">8</div>
-        <div class="buttongroup3 squarebutton" id="nine" data-key="105">9</div>
-        <div class="buttongroup2 squarebutton" id="multiply" data-key="106">&#215;</div> <!-- &#215; for multiplication sign -->
-        <div class="buttongroup3 squarebutton" id="four" data-key="100">4</div>
-        <div class="buttongroup3 squarebutton" id="five" data-key="101">5</div>
-        <div class="buttongroup3 squarebutton" id="six"  data-key="102">6</div>
-        <div class="buttongroup2 squarebutton" id="minus" data-key="109">-</div>
-        <div class="buttongroup3 squarebutton" id="one" data-key="97">1</div>
-        <div class="buttongroup3 squarebutton" id="two" data-key="98">2</div>
-        <div class="buttongroup3 squarebutton" id="three" data-key="99">3</div>
-        <div class="buttongroup2 squarebutton" id="plus" data-key="107">+</div>
-        <div class="buttongroup3 squarebutton" id="zero" data-key="96">0</div>
-        <div class="buttongroup3 squarebutton" id="decimal" data-key="110">.</div>
-        <div class="buttongroup2 squarebutton" id="equal" data-key="13">=</div>
+        <div class="keys" id="parentOfKeys">
+            <div class="buttongroup1 squarebutton" id="ac" data-key="46" data-action="clear">AC</div>
+            <div class="buttongroup1 squarebutton" id="plusminus" data-action="positive_negative">+/-</div>
+            <div class="buttongroup1 squarebutton" id="percent" data-action="percent">%</div>
+            <div class="buttongroup2 squarebutton" id="divide" data-key="111" data-action="divide">÷</div> <!-- &#247; -->
+            <div class="buttongroup3 squarebutton" id="seven" data-key="103">7</div>
+            <div class="buttongroup3 squarebutton" id="eight" data-key="104">8</div>
+            <div class="buttongroup3 squarebutton" id="nine" data-key="105">9</div>
+            <div class="buttongroup2 squarebutton" id="multiply" data-key="106" data-action="multiply">&#215;</div> <!-- &#215; for multiplication sign -->
+            <div class="buttongroup3 squarebutton" id="four" data-key="100">4</div>
+            <div class="buttongroup3 squarebutton" id="five" data-key="101">5</div>
+            <div class="buttongroup3 squarebutton" id="six"  data-key="102">6</div>
+            <div class="buttongroup2 squarebutton" id="minus" data-key="109" data-action="minus">-</div>
+            <div class="buttongroup3 squarebutton" id="one" data-key="97">1</div>
+            <div class="buttongroup3 squarebutton" id="two" data-key="98">2</div>
+            <div class="buttongroup3 squarebutton" id="three" data-key="99">3</div>
+            <div class="buttongroup2 squarebutton" id="plus" data-key="107" data-action="add">+</div>
+            <div class="buttongroup3 squarebutton" id="zero" data-key="96">0</div>
+            <div class="buttongroup3 squarebutton" id="decimal" data-key="110">.</div>
+            <div class="buttongroup2 squarebutton" id="equal" data-key="13" data-action="equal">=</div>
+        </div>
     </div>
 </body>
 <script src="app.js"></script>

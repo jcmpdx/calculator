@@ -24,7 +24,8 @@ function calc(a, operator, b) {
     if (operator === 'minus') result = subtract(a, b);
     if (operator === 'multiply') result = multiply(a, b);
     if (operator === 'divide') result = divide(a, b);
-    return result.toFixed(4);
+    result = Math.round(result * 10000) / 10000; // rounding to 4 decimal places
+    return result;
 }
 
 const display = document.getElementById('display');
@@ -33,15 +34,19 @@ let afterAction = false;
 let firstValue = 0;
 let secondValue = 0;
 let operator = '';
+let lastKey = '';
+let lastKeyType = '';
 
 keys.addEventListener('click', e => {
     const key = e.target;
     const action = key.dataset.action;
     if (key.matches('.squarebutton')) { // disables the parent div from being selectable
-        // loops through all keys and removes .selected
-        Array.from(key.parentNode.children).forEach(k => k.classList.remove('selected'));
+        Array.from(key.parentNode.children).forEach(k => k.classList.remove('selected')); // loops through all keys and removes .selected
         if (action === 'clear') {
             display.textContent = 0;
+            firstValue = 0;
+            secondValue = 0;
+            lastKeyType = 'clear';
         }
         if (!action) {
             if (display.textContent === '0' || afterAction === true) {
@@ -50,13 +55,22 @@ keys.addEventListener('click', e => {
             } else {
                 display.textContent += key.textContent;
             }
+            lastKey = 'number';
         }
         if (action === 'decimal') {
-            display.textContent += '.';
+            afterAction = false;
+            if (!display.textContent.includes('.')) {
+                display.textContent += '.';
+            } else if (lastKeyType === 'operator')  { // problem here -- takes 2 clicks to work
+                console.log(`afterAction = ${afterAction}`);
+                display.textContent = '0.';
+            }
         }
         if (action === 'divide' || action === 'multiply' || action === 'minus' || action === 'add') {
             key.classList.add('selected');
             afterAction = true;
+            lastKeyType = 'operator';
+            lastKey = action;
             firstValue = display.textContent;
             operator = action;
             console.log(`1st value=${firstValue} and operator=${operator}`);
@@ -65,7 +79,7 @@ keys.addEventListener('click', e => {
             secondValue = display.textContent;
             console.log(`2nd value=${secondValue}`);
             display.textContent = calc(firstValue, operator, secondValue);
+            lastKey = 'equal';
         }
     }
-
 });

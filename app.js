@@ -34,7 +34,6 @@ let afterAction = false;
 let firstValue = 0;
 let secondValue = 0;
 let operator = '';
-let lastKey = '';
 let lastKeyType = '';
 
 keys.addEventListener('click', e => {
@@ -45,8 +44,7 @@ keys.addEventListener('click', e => {
         if (action === 'clear') {
             display.textContent = 0;
             firstValue = 0;
-            secondValue = 0;
-            lastKeyType = 'clear';
+            secondValue = 0;;
         }
         if (!action) {
             if (display.textContent === '0' || afterAction === true) {
@@ -55,7 +53,6 @@ keys.addEventListener('click', e => {
             } else {
                 display.textContent += key.textContent;
             }
-            lastKey = 'number';
         }
         if (action === 'decimal') {
             afterAction = false;
@@ -70,7 +67,6 @@ keys.addEventListener('click', e => {
             key.classList.add('selected');
             afterAction = true;
             lastKeyType = 'operator';
-            lastKey = action;
             firstValue = display.textContent;
             operator = action;
             console.log(`1st value=${firstValue} and operator=${operator}`);
@@ -79,7 +75,8 @@ keys.addEventListener('click', e => {
             secondValue = display.textContent;
             console.log(`2nd value=${secondValue}`);
             display.textContent = calc(firstValue, operator, secondValue);
-            lastKey = 'equal';
         }
     }
 });
+
+// need to work on stringing together events where user presses number > operator > number > operator. The (number, operator, number) needs to calc and become var firstValue

@@ -30,7 +30,6 @@ function calc(a, operator, b) {
 
 const display = document.getElementById('display');
 const keys = document.querySelector('.keys');
-let afterAction = false;
 let firstValue = 0;
 let secondValue = 0;
 let operator = '';
@@ -44,28 +43,28 @@ keys.addEventListener('click', e => {
         if (action === 'clear') {
             display.textContent = 0;
             firstValue = 0;
-            secondValue = 0;;
+            secondValue = 0;
+            lastKeyType = '';
         }
         if (!action) {
-            if (display.textContent === '0' || afterAction === true) {
+            if (display.textContent === '0.') {
+                display.textContent += key.textContent;
+            } else if (display.textContent === '0' || lastKeyType === 'operator') {
                 display.textContent = key.textContent;
-                afterAction = false;
+                lastKeyType = 'number'
             } else {
                 display.textContent += key.textContent;
             }
         }
         if (action === 'decimal') {
-            afterAction = false;
             if (!display.textContent.includes('.')) {
                 display.textContent += '.';
-            } else if (lastKeyType === 'operator')  { // problem here -- takes 2 clicks to work
-                console.log(`afterAction = ${afterAction}`);
+            } else if (lastKeyType === 'operator')  { // problem here - takes 2 clicks to show up on display
                 display.textContent = '0.';
             }
         }
         if (action === 'divide' || action === 'multiply' || action === 'minus' || action === 'add') {
             key.classList.add('selected');
-            afterAction = true;
             lastKeyType = 'operator';
             firstValue = display.textContent;
             operator = action;
@@ -75,6 +74,7 @@ keys.addEventListener('click', e => {
             secondValue = display.textContent;
             console.log(`2nd value=${secondValue}`);
             display.textContent = calc(firstValue, operator, secondValue);
+            lastKeyType = 'equal'
         }
     }
 });

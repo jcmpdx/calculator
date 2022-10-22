@@ -28,6 +28,13 @@ function calc(a, operator, b) {
     return result;
 }
 
+function clear() {
+    display.textContent = 0;
+    firstValue = 0;
+    secondValue = 0;
+    lastKeyType = '';
+}
+
 const display = document.getElementById('display');
 const keys = document.querySelector('.keys');
 let firstValue = 0;
@@ -42,12 +49,12 @@ keys.addEventListener('click', e => {
     if (key.matches('.squarebutton')) { // disables the parent div from being selectable
         Array.from(key.parentNode.children).forEach(k => k.classList.remove('selected')); // loops through all keys and removes .selected
         if (action === 'clear') {
-            display.textContent = 0;
-            firstValue = 0;
-            secondValue = 0;
-            lastKeyType = '';
+            clear();
         }
         if (!action) {
+            if (lastKeyType === 'equal') {
+                clear();
+            }
             if (display.textContent === '0.') {
                 display.textContent += key.textContent;
             } else if (display.textContent === '0' || lastKeyType === 'operator') {
@@ -57,10 +64,10 @@ keys.addEventListener('click', e => {
             }
             lastKeyType = 'number'
         }
-        if (Boolean(firstValue) && lastKeyType !== 'operator') {
-            secondValue = display.textContent;
-            calcResult = calc(firstValue, operator, secondValue);
-        }
+        // if (Boolean(firstValue) && lastKeyType !== 'operator') {
+        //     secondValue = display.textContent;
+        //     calcResult = calc(firstValue, operator, secondValue);
+        // }
         if (action === 'decimal') {
             if (!display.textContent.includes('.')) {
                 display.textContent += '.';
@@ -69,6 +76,9 @@ keys.addEventListener('click', e => {
             }
         }
         if (action === 'divide' || action === 'multiply' || action === 'minus' || action === 'add') {
+            if (lastKeyType === 'operator') {
+                return;
+            }
             secondValue = display.textContent;
             if (Boolean(firstValue) && Boolean(operator)) {
                 display.textContent = calc(firstValue, operator, secondValue);
@@ -85,8 +95,6 @@ keys.addEventListener('click', e => {
             display.textContent = calc(firstValue, operator, secondValue);
             lastKeyType = 'equal';
         }
-        console.log(`lastKeyType is ${lastKeyType}`);
-        // console.log(`calcResult is ${calcResult}`);
     }
 });
 

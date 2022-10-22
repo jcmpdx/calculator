@@ -34,6 +34,7 @@ let firstValue = 0;
 let secondValue = 0;
 let operator = '';
 let lastKeyType = '';
+let calcResult = 0;
 
 keys.addEventListener('click', e => {
     const key = e.target;
@@ -51,19 +52,27 @@ keys.addEventListener('click', e => {
                 display.textContent += key.textContent;
             } else if (display.textContent === '0' || lastKeyType === 'operator') {
                 display.textContent = key.textContent;
-                lastKeyType = 'number'
             } else {
                 display.textContent += key.textContent;
             }
+            lastKeyType = 'number'
+        }
+        if (Boolean(firstValue) && lastKeyType !== 'operator') {
+            secondValue = display.textContent;
+            calcResult = calc(firstValue, operator, secondValue);
         }
         if (action === 'decimal') {
             if (!display.textContent.includes('.')) {
                 display.textContent += '.';
-            } else if (lastKeyType === 'operator')  { // problem here - takes 2 clicks to show up on display
+            } else if (lastKeyType === 'operator')  { // issue here - takes 2 clicks to show up on display
                 display.textContent = '0.';
             }
         }
         if (action === 'divide' || action === 'multiply' || action === 'minus' || action === 'add') {
+            secondValue = display.textContent;
+            if (Boolean(firstValue) && Boolean(operator)) {
+                display.textContent = calc(firstValue, operator, secondValue);
+            }
             key.classList.add('selected');
             lastKeyType = 'operator';
             firstValue = display.textContent;
@@ -74,8 +83,10 @@ keys.addEventListener('click', e => {
             secondValue = display.textContent;
             console.log(`2nd value=${secondValue}`);
             display.textContent = calc(firstValue, operator, secondValue);
-            lastKeyType = 'equal'
+            lastKeyType = 'equal';
         }
+        console.log(`lastKeyType is ${lastKeyType}`);
+        // console.log(`calcResult is ${calcResult}`);
     }
 });
 

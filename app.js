@@ -35,6 +35,10 @@ function clear() {
     lastKeyType = '';
 }
 
+function percentage(value) {
+    return value / 100;
+}
+
 const display = document.getElementById('display');
 const keys = document.querySelector('.keys');
 let firstValue = 0;
@@ -77,9 +81,19 @@ keys.addEventListener('click', e => {
         }
         if (action === 'divide' || action === 'multiply' || action === 'minus' || action === 'add') {
             if (lastKeyType === 'operator') {
+                key.classList.remove('selected');
+                key.classList.add('selected');
                 return;
             }
             secondValue = display.textContent;
+            if (lastKeyType === 'equal') {
+                firstValue = display.textContent;
+                lastKeyType = 'operator';
+                operator = action;
+                key.classList.remove('selected');
+                key.classList.add('selected');
+                return;
+            }
             if (Boolean(firstValue) && Boolean(operator)) {
                 display.textContent = calc(firstValue, operator, secondValue);
             }

@@ -39,6 +39,19 @@ function percentage(value) {
     return value / 100;
 }
 
+function negative(value) {
+    return value * -1;
+}
+
+// function removeTransition(e) {
+//     if (e.propertyName !== 'transform') return;
+//     this.classList.remove('clicked');
+//  }
+
+function calculator(e) {
+    
+}
+
 const display = document.getElementById('display');
 const keys = document.querySelector('.keys');
 let firstValue = 0;
@@ -104,6 +117,18 @@ keys.addEventListener('click', e => {
             console.log(`2nd value=${secondValue}`);
             display.textContent = calc(firstValue, operator, secondValue);
             lastKeyType = 'equal';
+        }
+        if (action === 'percent') {
+            if (lastKeyType === 'operator') { // could use clean up, currently requires 2 clicks
+                display.textContent = '0';
+            }
+            display.textContent = percentage(display.textContent);
+        }
+        if (action === 'positive_negative') {
+            if (lastKeyType === 'operator') { // could use clean up, currently requires 2 clicks
+                display.textContent = '0';
+            }
+            display.textContent = negative(display.textContent);
         }
     }
 });

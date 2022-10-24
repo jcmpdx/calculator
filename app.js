@@ -68,10 +68,6 @@ keys.addEventListener('click', e => {
             }
             lastKeyType = 'number'
         }
-        // if (Boolean(firstValue) && lastKeyType !== 'operator') {
-        //     secondValue = display.textContent;
-        //     calcResult = calc(firstValue, operator, secondValue);
-        // }
         if (action === 'decimal') {
             if (!display.textContent.includes('.')) {
                 display.textContent += '.';
@@ -111,5 +107,3 @@ keys.addEventListener('click', e => {
         }
     }
 });
-
-// need to work on stringing together events where user presses number > operator > number > operator. The (number, operator, number) needs to calc and become var firstValue

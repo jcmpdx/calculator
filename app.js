@@ -43,24 +43,7 @@ function negative(value) {
     return value * -1;
 }
 
-// function removeTransition(e) {
-//     if (e.propertyName !== 'transform') return;
-//     this.classList.remove('clicked');
-//  }
-
 function calculator(e) {
-    
-}
-
-const display = document.getElementById('display');
-const keys = document.querySelector('.keys');
-let firstValue = 0;
-let secondValue = 0;
-let operator = '';
-let lastKeyType = '';
-let calcResult = 0;
-
-keys.addEventListener('click', e => {
     const key = e.target;
     const action = key.dataset.action;
     if (key.matches('.squarebutton')) { // disables the parent div from being selectable
@@ -131,4 +114,15 @@ keys.addEventListener('click', e => {
             display.textContent = negative(display.textContent);
         }
     }
-});
+}
+
+const display = document.getElementById('display');
+const keys = document.querySelector('.keys');
+let firstValue = 0;
+let secondValue = 0;
+let operator = '';
+let lastKeyType = '';
+let calcResult = 0;
+
+keys.addEventListener('click', calculator);
+keys.addEventListener('keydown', calculator);

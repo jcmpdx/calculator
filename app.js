@@ -105,7 +105,11 @@ function calculator(e) {
             if (lastKeyType === 'operator') { // could use clean up, currently requires 2 clicks
                 display.textContent = '0';
             }
+            if (lastKeyType === 'percentage') {
+                display.textContent = display.textContent * 100; // not working as intended - to undo the percentage value
+            }
             display.textContent = percentage(display.textContent);
+            lastKeyType = 'percentage';
         }
         if (action === 'positive_negative') {
             if (lastKeyType === 'operator') { // could use clean up, currently requires 2 clicks
@@ -125,4 +129,3 @@ let lastKeyType = '';
 let calcResult = 0;
 
 keys.addEventListener('click', calculator);
-keys.addEventListener('keydown', calculator);
